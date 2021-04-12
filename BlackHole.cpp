@@ -1,8 +1,9 @@
+// preprocessor directives
 #include <iostream>
 #include <cmath>
 #include <sstream>
 #include <fstream>
-using namespace std;
+// main function
 int main() {
 	class BlackHole {
 		public:
@@ -36,8 +37,8 @@ int main() {
 				double TE2 = sqrt(TE1);
 				return TE2;
 				}
-	}; // i think it is overwriting on each loop
-	for(int n = 1; n < 513; n++) { //NOTE it does not like saying n = 2 for the second condition! it just loops infinitely
+	};
+	for(int n = 1; n < 513; n++) {
 		double SolarMass = n * 2 * pow(10, 30);
 		BlackHole blackhole;
 		// all values
@@ -49,63 +50,56 @@ int main() {
 		file1 << "Radiation = " << blackhole.Radiation(SolarMass) << " W m^-2" << endl;
 		file1 << "Time to reach Thermal Equilibrium = " << blackhole.ThermalEquilibrium(SolarMass) << " s = " << blackhole.ThermalEquilibrium(SolarMass)/(3.1536 * pow(10, 7)) << " years" << endl << endl;
 		file1.close();
-		// excel - radius vs solar mass
+		// radius vs solar mass
 		ofstream file2;
 		file2.open("RadiusSM.csv", fstream::app);
 		file2 << n << " , " << blackhole.Radius(SolarMass) << endl;
 		file2.close();
-		// excel - temperature vs solar mass
+		// temperature vs solar mass
 		ofstream file3;
 		file3.open("TempSM.csv", fstream::app);
 		file3 << n << " , " << blackhole.Temperature(SolarMass) << endl;
 		file3.close();
-		// excel - radiation vs solar mass
+		// radiation vs solar mass
 		ofstream file4;
 		file4.open("RadiationSM.csv", fstream::app);
 		file4 << n << " , " << blackhole.Radiation(SolarMass) << endl;
 		file4.close();
-		// excel - equilibrium vs solar mass
+		// equilibrium vs solar mass
 		ofstream file5;
 		file5.open("EquiSM.csv", fstream::app);
 		file5 << n << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
 		file5.close();
-		// excel - radius vs temperature
+		// radius vs temperature
 		ofstream file6;
 		file6.open("RadiusTemp.csv", fstream::app);
 		file6 << blackhole.Radius(SolarMass) << " , " << blackhole.Temperature(SolarMass) << endl;
 		file6.close();
-		// excel - radius vs radiation
+		// radius vs radiation
 		ofstream file7;
 		file7.open("RadiusRadiation.csv", fstream::app);
 		file7 << blackhole.Radius(SolarMass) << " , " << blackhole.Radiation(SolarMass) << endl;
 		file7.close();
-		// excel - radius vs equilibrium
+		// radius vs equilibrium
 		ofstream file8;
 		file8.open("RadiusEqui.csv", fstream::app);
 		file8 << blackhole.Radius(SolarMass) << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
 		file8.close();
-		// excel - temperature vs radiation
+		// temperature vs radiation
 		ofstream file9;
 		file9.open("TempRadiation.csv", fstream::app);
 		file9 << blackhole.Temperature(SolarMass) << " , " << blackhole.Radiation(SolarMass) << endl;
 		file9.close();
-		// excel - temperature vs equilibrium
+		// temperature vs equilibrium
 		ofstream file10;
 		file10.open("TempEqui.csv", fstream::app);
 		file10 << blackhole.Temperature(SolarMass) << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
 		file10.close();
-		// excel - radiation vs equilibrium
+		// radiation vs equilibrium
 		ofstream file11;
 		file11.open("RadiationEqui.csv", fstream::app);
 		file11 << blackhole.Radiation(SolarMass) << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
 		file11.close();
-		cout << n << endl;
 	}
 	return 0;
 }
-// different types of files (start with writing to main file, then do others)
-// units for each, correct spaces between
-// announcement for each solar mass
-// increase for loop to however many you want for accuracy (512 for now)
-// rounding correctly for each?
-// concatenation
