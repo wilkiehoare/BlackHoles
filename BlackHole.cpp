@@ -24,6 +24,9 @@ int main() {
 				radius = (2 * G * SolarMass)/pow(c, 2);
 				return radius;
 				}
+			double Density(double SolarMass) {
+				double density = (3 * pow(c, 6))/(32 * pi * pow(G, 3) * pow(SolarMass, 2));
+				return density;
 			double Temperature(double SolarMass) {
 				temperature = (hbar * pow(c, 3))/(8 * pi * G * k * SolarMass);
 				return temperature;
@@ -70,36 +73,62 @@ int main() {
 		file5.open("EquiSM.csv", fstream::app);
 		file5 << n << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
 		file5.close();
-		// radius vs temperature
+		// density vs solar mass
 		ofstream file6;
-		file6.open("RadiusTemp.csv", fstream::app);
-		file6 << blackhole.Radius(SolarMass) << " , " << blackhole.Temperature(SolarMass) << endl;
+		file6.open("DensitySM.csv", fstream::app);
+		file6 << n << " , " << blackhole.Density(SolarMass) << endl;
 		file6.close();
-		// radius vs radiation
+		// radius vs density
 		ofstream file7;
-		file7.open("RadiusRadiation.csv", fstream::app);
-		file7 << blackhole.Radius(SolarMass) << " , " << blackhole.Radiation(SolarMass) << endl;
+		file7.open("RadiusDensity.csv", fstream::app);
+		file7 << blackhole.Radius(SolarMass) << " , " << blackhole.Density(SolarMass) << endl;
 		file7.close();
-		// radius vs equilibrium
+		// radius vs temperature
 		ofstream file8;
-		file8.open("RadiusEqui.csv", fstream::app);
-		file8 << blackhole.Radius(SolarMass) << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
+		file8.open("RadiusTemp.csv", fstream::app);
+		file8 << blackhole.Radius(SolarMass) << " , " << blackhole.Temperature(SolarMass) << endl;
 		file8.close();
-		// temperature vs radiation
+		// radius vs radiation
 		ofstream file9;
-		file9.open("TempRadiation.csv", fstream::app);
-		file9 << blackhole.Temperature(SolarMass) << " , " << blackhole.Radiation(SolarMass) << endl;
+		file9.open("RadiusRadiation.csv", fstream::app);
+		file9 << blackhole.Radius(SolarMass) << " , " << blackhole.Radiation(SolarMass) << endl;
 		file9.close();
-		// temperature vs equilibrium
+		// radius vs equilibrium
 		ofstream file10;
-		file10.open("TempEqui.csv", fstream::app);
-		file10 << blackhole.Temperature(SolarMass) << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
+		file10.open("RadiusEqui.csv", fstream::app);
+		file10 << blackhole.Radius(SolarMass) << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
 		file10.close();
-		// radiation vs equilibrium
+		// temperature vs density
 		ofstream file11;
-		file11.open("RadiationEqui.csv", fstream::app);
-		file11 << blackhole.Radiation(SolarMass) << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
+		file11.open("TempDensity.csv", fstream::app);
+		file11 << blackhole.Temperature(SolarMass) << " , " << blackhole.Density(SolarMass) << endl;
 		file11.close();
+		// temperature vs radiation
+		ofstream file12;
+		file12.open("TempRadiation.csv", fstream::app);
+		file12 << blackhole.Temperature(SolarMass) << " , " << blackhole.Radiation(SolarMass) << endl;
+		file12.close();
+		// temperature vs equilibrium
+		ofstream file13;
+		file13.open("TempEqui.csv", fstream::app);
+		file13 << blackhole.Temperature(SolarMass) << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
+		file13.close();
+		// radiation vs equilibrium
+		ofstream file14;
+		file14.open("RadiationEqui.csv", fstream::app);
+		file14 << blackhole.Radiation(SolarMass) << " , " << blackhole.ThermalEquilibrium(SolarMass) << endl;
+		file14.close();
+		// radiation vs density
+		ofstream file15;
+		file15.open("RadiationDensity.csv", fstream::app);
+		file15 << blackhole.Radiation(SolarMass) << " , " << blackhole.Density(SolarMass) << endl;
+		file15.close();
+		// equilibrium vs density
+		ofstream file16;
+		file16.open("EquiDensity.csv", fstream::app);
+		file16 << blackhole.ThermalEquilibrium(SolarMass) << " , " << blackhole.Density(SolarMass) << endl;
+		file16.close();
+		cout << n << endl;
 	}
 	return 0;
 }
