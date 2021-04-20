@@ -27,6 +27,7 @@ int main() {
 			double Density(double SolarMass) {
 				double density = (3 * pow(c, 6))/(32 * pi * pow(G, 3) * pow(SolarMass, 2));
 				return density;
+				}
 			double Temperature(double SolarMass) {
 				temperature = (hbar * pow(c, 3))/(8 * pi * G * k * SolarMass);
 				return temperature;
@@ -46,9 +47,10 @@ int main() {
 		BlackHole blackhole;
 		// all values
 		ofstream file1;
-		file1.open("AllValues.csv", fstream::app);
+		file1.open("AllValues.txt", fstream::app);
 		file1 << "Solar Mass " << n << ":" << endl;
 		file1 << "Radius = " << blackhole.Radius(SolarMass) << " m" << endl;
+		file1 << "Density = " << blackhole.Density(SolarMass) << " kg m^-3" << endl;
 		file1 << "Temperature = " << blackhole.Temperature(SolarMass) << " K" << endl;
 		file1 << "Radiation = " << blackhole.Radiation(SolarMass) << " W m^-2" << endl;
 		file1 << "Time to reach Thermal Equilibrium = " << blackhole.ThermalEquilibrium(SolarMass) << " s = " << blackhole.ThermalEquilibrium(SolarMass)/(3.1536 * pow(10, 7)) << " years" << endl << endl;
